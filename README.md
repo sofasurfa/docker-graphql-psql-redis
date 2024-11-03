@@ -12,7 +12,7 @@
 - Allowed **currencies** enum (USD, EUR, RUB, etc..) see `users` table in `init.db` 
 - `purchases` resolver in `User` GraphQL type, so we can do `user(id: **) { name, purchases { id, name, minPrice, tradable }}`
 - **Password hashing/salting** (not implemented yet in Node, but I laid the foundation and left links to my research in SQL comments)
-- Installed **UUID.v7** as a `postgres extension` in `init.db` (UUID.v7 allows us to `ORDER BY id DESC`)
+- Installed (via `curl` in `psql/Dockerfile`) **UUID.v7** as a `postgres extension` in `init.db` (UUID.v7 allows us to `ORDER BY id DESC`)
 - Graceful shutdown for GraphQL (using `ApolloServerPluginDrainHttpServer()`)
 - Built endpoints 1,2,3,4 accessed by GraphQL's playground
 
