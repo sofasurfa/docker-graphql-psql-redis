@@ -1,0 +1,41 @@
+services:
+  app:
+    platform: linux/amd64
+    # always restart when app crashes
+    restart: always
+    container_name: server
+    build:
+      # dockerfile /docker bcz we change
+      # context: to root
+      dockerfile: docker/Dockerfile
+      context: ../
+      # target: dev
+    volumes:
+      - app:/app
+    ports:
+      - "80:8000" # expose http:80 to container on :8000
+      # links:
+      # - db
+    environment:
+      NODE_ENV: development # So GraphQL playground works 
+      REDIS_URL: /run/secrets/redis_url
+      DB_URL: /run/secrets/db_url
+      JWT_SECRET: /run/secrets/jwt_secret
+      APP_ENV: development #  development / production
+      APP_LOG_LEVEL: debug # "error" for production
+      APP_LOG_FOLDER: tmp/logs/
+    secrets:
+      - redis_url
+      - db_url
+      - jwt_secret
+# ------
+secrets:
+  redis_url:
+    file: secrets/redis_url.txt
+  db_url:
+    file: secrets/db_url.txt
+  jwt_secret:
+    file: secrets/jwt_secret.txt
+
+volumes:
+  app:

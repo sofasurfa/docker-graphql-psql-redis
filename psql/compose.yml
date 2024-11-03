@@ -1,0 +1,34 @@
+services:
+  postgres:
+    platform: linux/amd64
+    container_name: db
+    build:
+      context: .
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # init db (extension, tables, etc)
+    ports:
+      - 28802:5432 # public:private port
+    environment:
+      POSTGRES_USER: main
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_DB: main_db
+    secrets:
+      - db_password
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # logging:
+    #   options:
+    #     max-size: 10m
+    #     max-file: "3"
+
+
+secrets:
+  db_password:
+    file: db_password.txt
+
+volumes:
+  postgres:

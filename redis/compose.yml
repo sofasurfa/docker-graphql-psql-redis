@@ -1,0 +1,25 @@
+services:
+  redis:
+    platform: linux/amd64
+    build:
+      dockerfile: Dockerfile
+      context: .
+    restart: always
+    ports:
+      - "6379:6379"
+    command: [redis-server, /usr/local/etc/redis/redis.conf]
+    volumes:
+      - redis:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    # environment:
+    #   REDIS_PASSWORD_FILE: /run/secrets/redis_password
+      # - REDIS_DATABASES=16
+    # secrets:
+    #   - redis_password
+# secrets:
+#   redis_password:
+#     file: redis_password.txt
+
+volumes:
+  redis:
+    driver: local

@@ -1,0 +1,65 @@
+
+scalar UUID
+
+enum Currency { 
+  USD
+  RUB
+  EUR
+  GBP
+}
+
+
+type User {
+  id: UUID!
+  name: String!
+  email: String!
+  balance: String!
+  currency: Currency!
+  lang: String!
+  timeCreated: String!
+  purchases: [Item] # resolver
+}
+
+
+type Item {
+  id: UUID!
+  name: String!
+  minPrice: Float!
+  maxPrice: Float!
+  currency: Currency!
+  tradable: Boolean!
+  quantity: Int!
+  itemPage: String!
+  createdAt: Int!
+}
+ 
+
+type Query {
+  user(userId: UUID!): User!
+  login(email: String!, password: String!): User!
+  items: [Item!] # no args just shows all items in DB
+}
+
+input AddUserInput {
+  name: String!
+  lang: String!
+  currency: Currency!
+  email: String!
+  password: String!
+}
+
+
+input EditUserInput {
+  name: String
+  lang: String
+  currency: Currency
+ # email: String!, --> ignore this for the moment
+  password: String
+}
+
+
+type Mutation {
+  # addUser(input: AddUserInput!): User --> don't need we already have 1 user for testing
+  editUser(input: EditUserInput!): User
+  purchase(itemId: UUID!): User
+}
