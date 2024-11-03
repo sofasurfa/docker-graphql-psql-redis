@@ -114,12 +114,11 @@ const resolvers: Resolvers = {
       const { itemId } = args;
       const userId = '0192e77e-553b-78fa-985d-ab962a062319'; 
       
-      // SQL Transaction
-      const user = await context.sqlClient.begin(async (sql: postgres.Sql)  => {
+    
         // Here we are just using maxPrice (buy at market price)
         // - not a limit order,
         // and checking that item is in stock
-        const item: Item[] = await sql<Item[]>`
+        const item: Item[] = await context.sqlClient<Item[]>`
           SELECT 
           max_price as "maxPrice"
           FROM items
@@ -132,14 +131,15 @@ const resolvers: Resolvers = {
         // - Subtract our user's balance
         // - Decrease item quantity
         // - Add item to purchases
-        // --> using Pipeline (https://github.com/porsager/postgres/issues/951)
-        await Promise.all([
-         sql`
-          UPDATE users SET balance = balance - ${itemPrice}
-          WHERE id = ${userId}`,
+        // Using pipeline (1 extra connection)
+        const pipeline = await context.sqlClient.begin((sql: postgres.Sql)  => [
+        sql`
+        UPDATE users SET balance = balance - ${itemPrice}
+        WHERE id = ${userId}`,
         sql`
           UPDATE items SET quantity = quantity - 1
           WHERE id = ${itemId}`,
+
         sql`
           INSERT INTO purchases (
             user_id,
@@ -149,8 +149,7 @@ const resolvers: Resolvers = {
             ${ itemId }
           )`
         ]);
-   
-
+ 
         // Get the user 
         const user: User[] = await context.sqlClient<User[]>`SELECT 
         id,
@@ -162,13 +161,11 @@ const resolvers: Resolvers = {
         email
         FROM users 
         WHERE id = ${userId}`;
-        
-        return user[0]
- 
-      });
+          
+        return user[0];
 
-      return user;
- 
+      
+  
     },
     editUser: async (parent, args, context: ApolloContext, info) => {
       // Using only password for now... 

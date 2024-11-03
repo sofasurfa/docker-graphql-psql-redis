@@ -36,9 +36,9 @@ These concepts are from my previous projects/experience, and the reasoning is: i
 ## How to run? 🤷‍♂️ 
 1) `cd` into the pulled/downloaded project directory
 2) Duplicate 2 more tabs in your terminal (you should now have 3 tabs)
-3) Tab 1: `cd psql` >> `docker compose up -d`
-4) Tab 2: `cd redis` >> `docker compose up -d`
-5) Tab 3: `cd server/docker` >> `docker compose up -d`
+3) Tab 1: `cd psql` >> `docker compose up`
+4) Tab 2: `cd redis` >> `docker compose up`
+5) Tab 3: `cd server/docker` >> `docker compose up`
 6) Great! Now visit [localhost/graphql](http://localhost/graphql) to run some GraphQL queries 🚀 
 
 ### GraphQL queries for the endpoints (copy & paste) 🎉 
@@ -55,9 +55,12 @@ mutation {
    editUser(input: {password: "123456789"}) { id, name, lang, balance }
 }
 ```
-> **To see password change:** 
+> **Try to run Endpoint 1 login query again = ❌ Error**
+
+> **To see password change in DB:** 
 RUN (in your terminal) `psql postgres://main:maindb-pas-36754321@localhost:28802/main_db` THEN `SELECT passhash from users;`.
 
+ 
 
 #### Endpoint 3 (items)
 ```
