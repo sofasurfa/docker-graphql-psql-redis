@@ -30,7 +30,7 @@
 - **Also look at the code comments as I describe what I would do in production :)**
 
 
-## Why I used 3 docker containers (server, psql, redis)? 🤔 
+## Why 3 Docker containers (server, psql, redis)? 🤔 
 These concepts are from my previous projects/experience, and the reasoning is: it’s easier to expand to a new machine by just copying the folders like `/redis` or `/psql` in case we need more disk space for **Postgres** or more RAM/Memory for **Redis**.  
 
 
