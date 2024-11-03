@@ -8,6 +8,7 @@
 - Use Docker **“secrets”** for important things like passwords, DB URLs, etc..
 - .dockerignore / .gitignore for "secrets"
 - For **user balance:** I used “micro-dollar” a concept used in financial industry to store money in a SQL database: `$amount * 1m`
+- Utilise **Postgres.js pipelining** via transaction in `purchase()`
 - Allowed **currencies** enum (USD, EUR, RUB, etc..) see `users` table in `init.db` 
 - `purchases` resolver in `User` GraphQL type, so we can do `user(id: **) { name, purchases { id, name, minPrice, tradable }}`
 - **Password hashing/salting** (not implemented yet in Node, but I laid the foundation and left links to my research in SQL comments)
