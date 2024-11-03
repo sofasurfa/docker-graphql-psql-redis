@@ -6,7 +6,7 @@
 
 - `tsconfig.json` configured to be in strict mode
 - Use Docker **“secrets”** for important things like passwords, DB URLs, etc..
-- .dockerignore / .gitignore for "secrets"
+- .dockerignore for "secrets"
 - For **user balance:** I used “micro-dollar” a concept used in financial industry to store money in a SQL database: `$amount * 1m`
 - Utilise **Postgres.js pipelining** via transaction in `purchase()`
 - Allowed **currencies** enum (USD, EUR, RUB, etc..) see `users` table in `init.db` 

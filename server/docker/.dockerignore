@@ -3,6 +3,7 @@ node_modules
 .gitignore
 *.md
 dist
+/secrets
 
 
 
