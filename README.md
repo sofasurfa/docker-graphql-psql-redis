@@ -20,7 +20,7 @@
 
 ## Things I didn’t have time to do 🥲 
 - Tests via Jest
-- **Caching** bcz it's not as simple as using `hSet/hGet` and storing items as a JSON string (I implemented caching in GoLang before). In our case `items` can change `quanity` that means we would need a `mutex` during `purchase()`, and prevent `hSet` while value is being changed. So we would need to use something like [Redlock](https://medium.com/@ayushnandanwar003/achieving-distributed-locking-in-node-js-with-redis-and-redlock-0574f5ac333d).
+- **Caching** bcz it's not as simple as using `hSet/hGet` and storing items as a JSON string (I implemented caching in GoLang before). In our case `items` can change `quantity` that means we would need a `mutex` during `purchase()`, and prevent `hSet` while value is being changed. So we would need to use something like [Redlock](https://medium.com/@ayushnandanwar003/achieving-distributed-locking-in-node-js-with-redis-and-redlock-0574f5ac333d).
 - Write a script to scan the Skinport API to include/insert all of “items” into the items table, so I just wrote some INSERTs in `/psql/init.db`
 - The table `items` only has some fields/rows compared to the Skinport API's json response 
 - Implement password hashing/salting via `bcrypt` OR using a `PSQL function`
