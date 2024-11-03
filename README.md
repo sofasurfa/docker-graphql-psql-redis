@@ -77,6 +77,7 @@ tradable,
 createdAt
 }}
 ```
+> Note: only 1 item in items table 
  
 #### Endpoint 4 (purchase)
 ```
@@ -93,6 +94,9 @@ mutation {
     }
 }
 ```
+> Run query multiple times, and see user's balance decrease
+
+
  
 
 
