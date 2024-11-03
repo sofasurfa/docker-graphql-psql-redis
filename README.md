@@ -44,33 +44,23 @@ These concepts are from my previous projects/experience, and the reasoning is: i
 ### GraphQL queries for the endpoints (copy & paste) 🎉 
 
 #### Endpoint 1 (login)
-`
+```
 query { login(email: "user@mail.com", password: "12345") { id, name, lang, currency, balance } }
-`
-> **Result:** `{
-  "data": {
-    "login": {
-      "id": "0192e77e-553b-78fa-985d-ab962a062319",
-      "name": "user",
-      "lang": "en",
-      "currency": "USD",
-      "balance": "1000.00"
-    }
-  }
-}`
+```
+ 
 
 #### Endpoint 2 (change password)
-`
+```
 mutation { 
    editUser(input: {password: "123456789"}) { id, name, lang, balance }
 }
-`
-> **For Result:** 
+```
+> **To see password change:** 
 RUN (in your terminal) `psql postgres://main:maindb-pas-36754321@localhost:28802/main_db` THEN `SELECT passhash from users;`.
 
 
 #### Endpoint 3 (items)
-`
+```
 query { items { 
 id,
 name,
@@ -82,12 +72,10 @@ itemPage,
 tradable,
 createdAt
 }}
-`
-> **Result:**
-`Too long, see it for yourself 😁`
-
+```
+ 
 #### Endpoint 4 (purchase)
-`
+```
 mutation { 
     purchase(itemId: "0192f17a-ec4b-7a06-8923-01c011ca1912") {
       id,
@@ -100,9 +88,8 @@ mutation {
       }
     }
 }
-`
-> **Result:**
-See it for yourself, notice how user's `balance` and item's `quantity` change if you buy miltiple times
+```
+ 
 
 
 
