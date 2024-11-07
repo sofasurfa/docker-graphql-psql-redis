@@ -1,5 +1,10 @@
 ## Server (NodeJS, Apollo GraphQL), Redis, PSQL (PostgresDB) via 3 Docker containers
-> ### Initially was a "pre-interview task" for a gaming company to store CSGO items and allows users to login, purchase, and return user's balance after making the purchase.
+### Initially was a "pre-interview task" for a gaming company to store CSGO items and allows:
+- Users to login
+- Change password
+- Show all items in DB
+- Purchase an item and return all the purchases made with the new balance (SQL update `$new_balance` = `$previous_balance` - `$item_pice`)
+  
 
 #### 👌 Notable things:  
 
