@@ -28,7 +28,7 @@
 - Write a script to scan the Skinport API to include/insert all of “items” into the items table, so I just wrote some INSERTs in `/psql/init.db`
 - The table `items` only has some fields/rows compared to the Skinport API's json response 
 - Implement password hashing/salting via `bcrypt` OR using a `PSQL function`
-- Use Cookies for session (as JWT is not allowed). So I just used user's UUID defined prior in a variable in `WHERE` SQL queries. In real world we would get current user's `userId` (from cookie/jwt) and pass it through `ApolloContext` to use in our database/redis/etc..  
+- Use Cookies/JWT for sessions. So I just used user's UUID defined prior in a variable in `WHERE` SQL queries. In real world we would get current user's `userId` (from cookie/jwt) and pass it through `ApolloContext` to use in our database/redis/etc..  
 - GraphQL custom error handling & **error logging**
 - Show balance only to the account owner
 - **Also look at the code comments as I describe what I would do in production :)**
