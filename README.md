@@ -1,5 +1,5 @@
 ## Server (NodeJS, Apollo GraphQL), Redis, PSQL (PostgresDB)
-> Initially was a task for a gaming companiy to store CSGO items and allows users to **login** and **purchase**
+### Initially was a task for a gaming company to store CSGO items and allows users to **login**, **purchase**, and return user's **balance** after making the purchase.
 
 #### 👌 Notable things:  
 
