@@ -1,5 +1,5 @@
 ## Server (NodeJS, Apollo GraphQL), Redis, PSQL (PostgresDB) via 3 Docker containers
-#### Initially was a "pre-interview task" for a gaming company to store CSGO items and allows users to login, purchase, and return user's balance after making the purchase.
+> ## Initially was a "pre-interview task" for a gaming company to store CSGO items and allows users to login, purchase, and return user's balance after making the purchase.
 
 #### 👌 Notable things:  
 
