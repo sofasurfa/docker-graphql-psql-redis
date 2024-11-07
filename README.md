@@ -1,5 +1,5 @@
 ## Server (NodeJS, Apollo GraphQL), Redis, PSQL (PostgresDB) via 3 Docker containers
-### Initially was a "pre-interview task" for a gaming company to store CSGO items and allows:
+### Initially was a "pre-interview task" for a gaming company to store CSGO items that allows:
 - Users to login
 - Change password
 - Show all items in DB
