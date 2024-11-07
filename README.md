@@ -1,8 +1,7 @@
-## Hi, due to having interviews and tests for other companies, I had limited time to do ***all the things I wanted...*** 
+## Server (NodeJS, Apollo GraphQL), Redis, PSQL (PostgresDB)
+> Initially was a task for a gaming companiy to store CSGO items and allows users to **login** and **purchase**
 
-### So I focused more on building a solid foundation for the server targeting security and portability via Docker.
-
-#### 👌 Notable things I did:   
+#### 👌 Notable things:  
 
 - `tsconfig.json` configured to be in strict mode
 - Use Docker **“secrets”** for important things like passwords, DB URLs, etc..
@@ -18,7 +17,7 @@
 
 
 
-## Things I didn’t have time to do 🥲 
+## Things to work on:
 - Tests via Jest
 - **Caching** bcz it's not as simple as using `hSet/hGet` and storing items as a JSON string (I implemented caching in GoLang before). In our case `items` can change `quantity` that means we would need a `mutex` during `purchase()`, and prevent `hSet` while value is being changed. So we would need to use something like [Redlock](https://medium.com/@ayushnandanwar003/achieving-distributed-locking-in-node-js-with-redis-and-redlock-0574f5ac333d). Here's more [Redlock stuff](https://blog.dennisokeeffe.com/blog/2021-10-04-locking-redis-transactions-in-nodejs).
 - Write a script to scan the Skinport API to include/insert all of “items” into the items table, so I just wrote some INSERTs in `/psql/init.db`
